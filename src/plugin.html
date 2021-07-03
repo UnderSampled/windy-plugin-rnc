@@ -1,11 +1,32 @@
+
 <plugin>
-    <b>This plugin will rock</b>
+    <h2>RNC Nautical Charts for Windy</h2>
+    <p>Show RNC nautical charts from NOAA in Windy!</p>
 
     <script>
-        console.log('I am mounted to the page');
+        import map from '@windy/map';
 
-        this.onopen = () => console.log('I am opened');
+        let baseLayer = map.baseLayer;
 
-        this.onclose = () => console.log('I am being closed');
+        let rncLayer = null;
+
+        this.onopen = () => {
+            // Generate the tile template
+            let tileSource = "//tileservice.charts.noaa.gov/tiles/50000_1/{z}/{x}/{y}.png";
+
+            // Add RNC layer
+            rncLayer = L.tileLayer(tileSource,{className:"rnc-layer", tileSize:256}).addTo(map);
+
+            // Set layer order
+            baseLayer.setZIndex(0);
+            rncLayer.setZIndex(1);
+        };
+
+        this.onclose = () => {
+            // Remove RNC layer
+            if (rncLayer) {
+                map.removeLayer(rncLayer);
+            }
+        };
     </script>
 </plugin>

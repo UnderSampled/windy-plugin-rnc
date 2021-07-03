@@ -1,6 +1,6 @@
 module.exports = {
     // Display name of your plugin, as it will appear in the menu
-    displayName: 'My super plugin',
+    displayName: 'RNC Nautical Charts',
 
     // Place, where opening link to your plugin will appear. So far only
     // Allowed: 'contextmenu', 'menu'
@@ -11,7 +11,7 @@ module.exports = {
     // dependencies: ['https://unpkg.com/d3@5.7.0/dist/d3.min.js']
 
     // List of classnames that will be attached to your plugin upon mounting
-    // className: 'plugin-lhpane plugin-mobile-fullscreen',
+     className: 'windy-plugin-rnc',
 
     // If you want to apply different set of classes on mobile devices
     // classNameMobile: 'this-is-other-class',
